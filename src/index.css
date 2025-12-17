@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer base {
+  [dir="rtl"] body {
+    font-family: "proxima-nova-arabic", sans-serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  33% {
+    transform: translateY(-30px) translateX(20px);
+  }
+
+  66% {
+    transform: translateY(20px) translateX(-15px);
+  }
+}
+
+@keyframes floatReverse {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  33% {
+    transform: translateY(20px) translateX(-20px);
+  }
+
+  66% {
+    transform: translateY(-25px) translateX(15px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-shift-mobile {
+  0% {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(34, 197, 94, 0.3) 50%, rgba(239, 68, 68, 0.3) 100%);
+  }
+
+  33% {
+    background: linear-gradient(225deg, rgba(34, 197, 94, 0.3) 0%, rgba(239, 68, 68, 0.3) 50%, rgba(59, 130, 246, 0.3) 100%);
+  }
+
+  66% {
+    background: linear-gradient(315deg, rgba(239, 68, 68, 0.3) 0%, rgba(59, 130, 246, 0.3) 50%, rgba(34, 197, 94, 0.3) 100%);
+  }
+
+  100% {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(34, 197, 94, 0.3) 50%, rgba(239, 68, 68, 0.3) 100%);
+  }
+}
+
+@keyframes gradient-move {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes gradient-move-fast {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(40px, -40px) scale(1.15);
+  }
+
+  50% {
+    transform: translate(-30px, 30px) scale(0.85);
+  }
+
+  75% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+}
+
+@keyframes gradient-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-rotate {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+/* Make Spline canvas background transparent */
+.spline-container canvas {
+  background: transparent !important;
+}
+
+/* Hide Spline "Built with Spline" badge for React Spline component */
+.spline-container a[href*="spline.design"]:not([href*="prod.spline.design/scene.splinecode"]),
+.spline-container a[href*="splinetool.com"],
+.spline-container a[href*="spline.app"],
+.spline-container a[href*="splinecode.com"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide parent container of badge */
+.spline-container div:has(> a[href*="spline.design"]:not([href*="prod.spline.design/scene.splinecode"])),
+.spline-container div:has(> a[href*="splinetool.com"]),
+.spline-container div:has(> a[href*="spline.app"]),
+.spline-container div:has(> a[href*="splinecode.com"]) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide any element containing "Built with Spline" text */
+.spline-container *:not(canvas):not(iframe) {
+  position: relative;
+}
+
+/* Hide all links in spline container except scene URLs */
+.spline-container a {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* But allow canvas and iframe to show */
+.spline-container canvas,
+.spline-container iframe {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Overlay to cover badge area - bottom right corner */
+.spline-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 80px;
+  background: transparent;
+  pointer-events: none;
+  z-index: 10000;
+  clip-path: polygon(100% 0, 100% 100%, 0% 100%);
+}
+
+/* Hide any absolute/fixed positioned elements in bottom-right (badge location) */
+.spline-container>* {
+  position: relative;
+}
+
+.spline-container a[style*="position: absolute"],
+.spline-container a[style*="position: fixed"],
+.spline-container div[style*="position: absolute"],
+.spline-container div[style*="position: fixed"] {
+  display: none !important;
+}
+
+/* Target specific badge locations */
+.spline-container [style*="bottom"],
+.spline-container [style*="right"] {
+  display: none !important;
+}
